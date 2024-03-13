@@ -1,6 +1,5 @@
 package exercise;
 
-import java.net.URI;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -32,13 +31,13 @@ public class Application {
 
     // BEGIN
     @GetMapping("/posts")
-    public ResponseEntity<List<Post>> index(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit) {
+    public ResponseEntity<List<Post>> index(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer limit) {
         var postsList = posts.stream().toList();
         var mass = new HashSet<Post>();
-        for (int i =  (page-1)*limit; i<page*limit; i++)
-        {
-            mass.add(postsList.get(i));
-        }
+        for (int i =  (page- 1 ) * limit; i < page * limit; i++) {
+            mass.add(postsList.get(i)); }
         return ResponseEntity.ok()
                 .header("X-Total-Count", String.valueOf(postsList.size()))
                 .body(mass.stream().toList());
@@ -70,7 +69,7 @@ public class Application {
             post.setBody(data.getBody());
             return ResponseEntity.ok(post);
         }
-        else return ResponseEntity.noContent();
+        else {return ResponseEntity.noContent();}
     }
     // END
 
