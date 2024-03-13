@@ -36,7 +36,7 @@ public class Application {
             @RequestParam(defaultValue = "10") Integer limit) {
         var postsList = posts.stream().toList();
         var mass = new HashSet<Post>();
-        for (int i =  (page- 1 ) * limit; i < page * limit; i++) {
+        for (int i =  (page - 1) * limit; i < page * limit; i++) {
             mass.add(postsList.get(i)); }
         return ResponseEntity.ok()
                 .header("X-Total-Count", String.valueOf(postsList.size()))
@@ -68,8 +68,8 @@ public class Application {
             post.setTitle(data.getTitle());
             post.setBody(data.getBody());
             return ResponseEntity.ok(post);
-        }
-        else {return ResponseEntity.noContent();}
+        } else {
+            return ResponseEntity.noContent(); }
     }
     // END
 
