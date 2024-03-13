@@ -3,12 +3,7 @@ package exercise.controller.users;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import exercise.model.Post;
 import exercise.Data;
@@ -32,11 +27,11 @@ public class PostsController {
 
     @PostMapping("/users/{id}/posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public Post create(@PathVariable String id, String slug, String title, String body) {
+    public Post create(@PathVariable String id, @RequestBody Post receivedPost) {
         var post = new Post();
-        post.setSlug(slug);
-        post.setTitle(title);
-        post.setBody(body);
+        post.setSlug(receivedPost.getSlug());
+        post.setTitle(receivedPost.getTitle());
+        post.setBody(receivedPost.getBody());
         post.setUserId(Integer.parseInt(id));
         posts.add(post);
         return post;
