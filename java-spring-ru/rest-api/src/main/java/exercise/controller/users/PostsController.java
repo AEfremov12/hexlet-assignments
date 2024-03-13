@@ -24,7 +24,7 @@ public class PostsController {
     @ResponseStatus(HttpStatus.OK)
     public List<Post> show(@PathVariable String id) {
         var result = posts.stream()
-                .filter(p -> p.getUserId().equals(Integer.parseInt(id)))
+                .filter(p -> p.getUserId().toString().equals(id))
                 .toList();
         return result;
     }
