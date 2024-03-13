@@ -2,7 +2,6 @@ package exercise;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -69,7 +68,7 @@ public class Application {
             post.setBody(data.getBody());
             return ResponseEntity.ok(post);
         } else {
-            return ResponseEntity.noContent();
+            return new ResponseEntity<Post>(post, HttpStatus.NO_CONTENT);
         }
     }
     // END
