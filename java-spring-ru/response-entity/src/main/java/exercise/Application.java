@@ -69,7 +69,8 @@ public class Application {
             post.setBody(data.getBody());
             return ResponseEntity.ok(post);
         } else {
-            return ResponseEntity.noContent(); }
+            return ResponseEntity.noContent();
+        }
     }
     // END
 
