@@ -57,7 +57,7 @@ public class Application {
     }
 
     @PutMapping("/posts/{id}") // Обновление страницы
-    public ResponseEntity<Post> update(@PathVariable String id, @RequestBody Post data) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody Post data) {
         var maybePost = posts.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst();
@@ -68,7 +68,7 @@ public class Application {
             post.setBody(data.getBody());
             return ResponseEntity.ok(post);
         } else {
-            return new ResponseEntity<Post>(post, HttpStatus.NO_CONTENT);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
     }
     // END
