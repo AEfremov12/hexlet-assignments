@@ -29,12 +29,13 @@ public class Application {
     @GetMapping("/admins")
     public List<String> getAdmins() {
         List<String> emailList = userProperties.getAdmins();
-        //Collections.sort(emailList);
         List<String> list = new ArrayList<>();
         emailList.forEach(email -> {
             users.forEach(user -> {
-                if (user.getEmail() == email) {
-                    list.add(user.getName());
+                if (user.getEmail().equals(email)) {
+                    if (!list.contains(user.getName())) {
+                        list.add(user.getName());
+                    }
                 }
             });
         });
