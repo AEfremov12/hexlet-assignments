@@ -32,7 +32,11 @@ public class Application {
         //Collections.sort(emailList);
         List<String> list = new ArrayList<>();
         emailList.forEach(email -> {
-            if (users.getEmail() == email) list.add(users.getName());
+            users.forEach(user -> {
+                if (user.getEmail() == email) {
+                    list.add(user.getName());
+                }
+            });
         });
         Collections.sort(list);
         return list;
