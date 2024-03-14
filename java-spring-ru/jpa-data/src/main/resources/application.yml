@@ -1,0 +1,8 @@
+---
+
+# BEGIN
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+# END
