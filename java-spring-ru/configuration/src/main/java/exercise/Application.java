@@ -27,7 +27,7 @@ public class Application {
 
     @GetMapping("/admins")
     public List<String> getAdmins() {
-        List<String> list = userProperties.admins;
+        List<String> list = userProperties.getAdmins();
         Collections.sort(list);
         return list;
     }
