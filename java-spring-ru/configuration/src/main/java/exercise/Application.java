@@ -1,5 +1,6 @@
 package exercise;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,12 @@ public class Application {
 
     @GetMapping("/admins")
     public List<String> getAdmins() {
-        List<String> list = userProperties.getAdmins();
+        List<String> emailList = userProperties.getAdmins();
+        //Collections.sort(emailList);
+        List<String> list = new ArrayList<>();
+        emailList.forEach(email -> {
+            if (users.getEmail() == email) list.add(users.getName());
+        });
         Collections.sort(list);
         return list;
     }
